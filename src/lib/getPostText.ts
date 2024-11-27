@@ -5,13 +5,13 @@ const openai = new OpenAI();
 
 export default async function getPostText() {
   
-    const response = await axios.get('https://www.drivebc.ca/mobile/pub/events/Highway16.html');
+    const response = await axios.get('https://www.drivebc.ca/api/weather/observations/46191');
     const users = response.data;
 
 
  const stream = await openai.chat.completions.create({
   model: "gpt-4o",
-  messages: [{ role: "user", content: "write a tweet on recent three events from " + response.data +"Add reference: https://www.drivebc.ca/mobile/pub/events/Highway16.html"+"Include only hashtags #Highway16 #Highway16Weather #Highway16RoadCondition #DriveHighway16"}],
+  messages: [{ role: "user", content: "write a tweet from " + response.data + " and remove text DriveBC Alert. Include only hashtags #Highway16 #YellowheadWeather #Highway16Yellowhead #CoquihallaRoadCondition #Highway16Yellowhead"}],
   stream: true,
 });
 var tweetString = '';
