@@ -11,7 +11,7 @@ export default async function getPostText() {
 
  const stream = await openai.chat.completions.create({
   model: "gpt-4o",
-  messages: [{ role: "user", content: "write a tweet from " + response.data + " and remove text DriveBC Alert. Include only hashtags #Highway16 #YellowheadWeather #Highway16Yellowhead #DriveHighway16"}],
+  messages: [{ role: "user", content: "write a tweet from " + response.data + " and remove text DriveBC Alert. Include only hashtags #BCStorm #BCWeather"}],
   stream: true,
 });
 var tweetString = '';
